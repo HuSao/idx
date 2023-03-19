@@ -1,0 +1,268 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+}
+
+header {
+    width: 100%;
+    height: 8%;
+
+    background: #f8f8f8;
+
+    position: absolute;
+}
+
+.hLeft {
+    border-radius: 100%;
+
+    width: 8%;
+    height: 100%;
+
+    float: left;
+
+    position: absolute;
+
+    z-index: 2048;
+}
+
+.cAbout {
+    fill: rgba(255, 255, 255, 0);
+
+    transition: fill 2s;
+}
+
+.cAbout:hover {
+    fill: rgba(0, 0, 0, 0.2);
+}
+
+.hRight {
+    border-radius: 100%;
+
+    width: 8%;
+    height: 100%;
+
+    float: right;
+
+    position: absolute;
+
+    z-index: 2048;
+
+    right: 0;
+}
+
+.symmetry {
+    width: 100%;
+    height: 84%;
+
+    position: absolute;
+
+    top: 8%;
+}
+
+.round {
+    width: 100%;
+    height: 64%;
+
+    position: absolute;
+
+    top: 18%;
+}
+
+.cAboutForm {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+
+    z-index: 2048;
+}
+
+.cClose {
+    fill: rgba(255, 255, 255, 0);
+
+    transition: fill 2s;
+}
+
+.cClose:hover {
+    fill: rgba(0, 0, 0, 0.2);
+}
+
+footer {
+    width: 100%;
+    height: 8%;
+
+    position: absolute;
+
+    bottom: 0;
+}
+
+@media screen and (orientation: portrait) {
+    header {
+        height: 6%;
+    }
+
+    .symmetry {
+        width: 100%;
+        height: 88%;
+
+        position: absolute;
+
+        top: 6%;
+    }
+
+    .hLeft {
+        width: 18%;
+    }
+
+    .hRight {
+        width: 18%;
+    }
+
+    .round {
+        width: 88%;
+
+        left: 6%;
+    }
+
+    footer {
+        height: 6%;
+    }
+}
+
+
+.confetti-container {
+    perspective: 700px;
+
+    position: absolute;
+
+    overflow: hidden;
+
+    top: 0;
+    bottom: 0;
+
+    left: 0;
+    right: 0;
+
+    /*user-select: none;*/
+
+    /*pointer-events: none;*/
+
+    /*background: #edb;*/
+
+    z-index: 1024;
+}
+
+.confetti {
+    position: absolute;
+
+    --confetti-color: blue;
+
+    transform-origin: top left;
+}
+
+.confetti::before {
+    content: "";
+
+    display: block;
+
+    height: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    background-color: var(--confetti-color);
+
+    transform-origin: center;
+}
+
+@keyframes confetti-slow {
+    0% {
+        margin-top: 0;
+
+        transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) scale(1, 1);
+
+        opacity: 1;
+    }
+
+    100% {
+        margin-top: 105%;
+
+        transform: translate3d(0, 0, 0) rotateX(360deg) rotateY(180deg) scale(1.4, 1.4);
+
+        opacity: 0;
+    }
+}
+
+@keyframes confetti-medium {
+    0% {
+        margin-top: 0;
+
+        transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) scale(1, 1);
+
+        opacity: 1;
+    }
+
+    100% {
+        margin-top: 105%;
+
+        transform: translate3d(0, 0, 0) rotateX(100deg) rotateY(360deg) scale(1.2, 1.2);
+
+        opacity: 0;
+    }
+}
+
+@keyframes confetti-fast {
+    0% {
+        margin-top: 0;
+
+        transform: translate3d(0, 0, 0) rotateX(0) rotateY(0) scale(0.8, 0.8);
+
+        opacity: 1;
+    }
+
+    100% {
+        margin-top: 105%;
+
+        transform: translate3d(0, 0, 0) rotateX(10deg) rotateY(250deg) scale(1.2, 1.2);
+
+        opacity: 0;
+    }
+}
+
+@keyframes confetti-medium2 {
+    0% {
+        transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+    }
+
+    100% {
+        transform: translate3d(100px, 105vh, 0) rotateX(100deg) rotateY(360deg);
+    }
+}
+
+@keyframes confetti-fast2 {
+    0% {
+        transform: translate3d(0, 0, 0) rotateX(0) rotateY(0);
+    }
+
+    100% {
+        transform: translate3d(-50px, 105vh, 0) rotateX(10deg) rotateY(250deg);
+    }
+}
+
+.confetti--animation-slow::before {
+    animation: confetti-slow 2.25s ease-out 1 forwards;
+}
+
+.confetti--animation-medium::before {
+    animation: confetti-medium 1.75s ease-out 1 forwards;
+}
+
+.confetti--animation-fast::before {
+    animation: confetti-fast 1.25s ease-out 1 forwards;
+}
